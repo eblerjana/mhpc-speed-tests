@@ -1,4 +1,4 @@
-# mhpc-speed-tests
+# mHPC speed tests
 
 Simple C++ program which reads a file line by line.
 
