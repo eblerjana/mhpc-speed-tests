@@ -1,17 +1,21 @@
 #include <iostream>
 #include <fstream>
 #include <string>
+#include <stdexcept>
 
 using namespace std;
 
 int main(int argc, char* argv[]) {
 	if (argc < 2) {
-		cerr << "No filename provided." << endl;
-		return 0;
+		throw runtime_error("No filename provided.");
+		return 1;
 	}
 	string filename = argv[1];
-	cout << "Reading " << filename << endl;
 	ifstream file(filename);
+	if (! file.good()) {
+		throw runtime_error("File cannot be opened.");
+		return 1;
+	}
 	string line;
 	unsigned int n_lines = 0;
 	while (getline(file, line)) {
